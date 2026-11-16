@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>OmniFlow Video Saver</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <img src="../icons/icon32.png" alt="" width="20" height="20">
+    <h1>Video Saver</h1>
+    <button id="record" class="ghost" title="Reload this page and save the stream while it plays">Record mode</button>
+  </header>
+  <main>
+    <section id="notice" class="notice" hidden></section>
+    <section id="items"></section>
+    <section id="jobs" hidden></section>
+    <section id="empty" class="empty" hidden>
+      <p class="big">No videos found yet</p>
+      <p>Press play on the video, then open this popup again. The source only becomes visible once the video starts loading.</p>
+      <p>Still nothing? Use <b>Record mode</b>: the page reloads and the video is saved while it plays.</p>
+    </section>
+  </main>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

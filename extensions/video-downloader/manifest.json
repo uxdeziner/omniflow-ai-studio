@@ -1,0 +1,35 @@
+{
+  "manifest_version": 3,
+  "name": "OmniFlow Video Saver",
+  "short_name": "Video Saver",
+  "version": "1.0.0",
+  "description": "Finds the real source of the video you are watching and saves the complete file, with sound, as a single MP4.",
+  "minimum_chrome_version": "116",
+  "icons": { "16": "icons/icon16.png", "32": "icons/icon32.png", "48": "icons/icon48.png", "128": "icons/icon128.png" },
+  "action": {
+    "default_title": "OmniFlow Video Saver",
+    "default_popup": "popup/popup.html",
+    "default_icon": { "16": "icons/icon16.png", "32": "icons/icon32.png" }
+  },
+  "background": { "service_worker": "background.js", "type": "module" },
+  "permissions": ["webRequest", "downloads", "storage", "offscreen", "declarativeNetRequestWithHostAccess"],
+  "host_permissions": ["<all_urls>"],
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["config.js", "content/hook.js"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "world": "MAIN"
+    },
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["config.js", "content/content.js"],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "web_accessible_resources": [
+    { "resources": ["lib/mux.js", "vendor/mediabunny.min.mjs"], "matches": ["http://*/*", "https://*/*"] }
+  ]
+}
